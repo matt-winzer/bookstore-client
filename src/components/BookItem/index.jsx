@@ -10,7 +10,7 @@ const BookItem = ({ book }) => (
     <p>Authors:</p>
     <ul>
       {book.authors.map((author) => (
-        <li>{author.name}</li>
+        <li key={author.name}>{author.name}</li>
       ))}
     </ul>
     <div className={styles.purchaseContainer}>

@@ -44,7 +44,7 @@ class App extends React.Component {
     const {
       books,
       activePage,
-      cartItems
+      cartItems,
     } = this.state;
 
     return (
@@ -60,7 +60,7 @@ class App extends React.Component {
         )}
         {activePage === 'cart' && (
           <Cart
-            cartItem={cartItems}
+            cartItems={cartItems}
           />
         )}
       </div>
