@@ -1,0 +1,11 @@
+.cardContainer {
+  box-shadow: 3px 5px 10px #161616;
+  padding: 1.5rem;  
+  border-radius: .2em;
+  background-color: rgb(45, 45, 46);
+  margin: 1rem 0;
+
+  &:hover {
+    background-color: rgb(75, 75, 75);
+  }
+}
