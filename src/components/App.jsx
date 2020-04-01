@@ -11,9 +11,11 @@ class App extends React.Component {
     super(props);
     this.state = {
       books: [],
+      activePage: 'list',
     };
 
     this.getAllBooks = this.getAllBooks.bind(this);
+    this.changeActivePage = this.changeActivePage.bind(this);
   }
 
   componentDidMount() {
@@ -30,17 +32,29 @@ class App extends React.Component {
       });
   }
 
+  changeActivePage(activePage) {
+    this.setState({
+      activePage,
+    });
+  }
+
   render() {
     const {
       books,
+      activePage,
     } = this.state;
 
     return (
       <div>
-        <Navigation active={'list'} />
-        <BookList
-          books={books}
+        <Navigation
+          active={activePage}
+          changeActivePage={this.changeActivePage}
         />
+        {activePage === 'list' && (
+          <BookList
+            books={books}
+          />
+        )}
       </div>
     );
   }

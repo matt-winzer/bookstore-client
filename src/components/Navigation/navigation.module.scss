@@ -10,6 +10,12 @@ div.navigation {
 
   p, h1 {
     margin: 0;
+  }
+
+   p {
+    &:hover {
+      cursor: pointer;
+    }
 
     &.active {
       color: $highlight;
