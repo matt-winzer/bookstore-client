@@ -52,6 +52,7 @@ class App extends React.Component {
         <Navigation
           active={activePage}
           changeActivePage={this.changeActivePage}
+          numCartItems={cartItems.length}
         />
         {activePage === 'list' && (
           <BookList
