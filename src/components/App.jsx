@@ -3,6 +3,7 @@ import '../App.scss';
 
 import { baseUrl } from '../api/api.config';
 
+import Navigation from './Navigation';
 import BookList from './BookList';
 
 class App extends React.Component {
@@ -36,7 +37,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <h1>Welcome to the Bookstore!</h1>
+        <Navigation active={'list'} />
         <BookList
           books={books}
         />
