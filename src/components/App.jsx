@@ -14,6 +14,9 @@ class App extends React.Component {
       books: [],
       activePage: 'list',
       cartItems: [],
+      user: {
+        id: 1,
+      },
     };
 
     this.getAllBooks = this.getAllBooks.bind(this);
@@ -22,6 +25,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getAllBooks();
+    this.getCartBooks();
   }
 
   getAllBooks() {
@@ -30,6 +34,17 @@ class App extends React.Component {
       .then(({ books }) => {
         this.setState({
           books,
+        });
+      });
+  }
+
+  getCartBooks() {
+    const { user } = this.state;
+    return fetch(`${baseUrl}/api/books/cart/${user.id}`)
+      .then((res) => res.json())
+      .then(({ books }) => {
+        this.setState({
+          cartItems: books,
         });
       });
   }
