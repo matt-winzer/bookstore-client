@@ -1,4 +1,17 @@
+@import '../../styles/variables';
+
 .cartItem {
   display: flex;
   justify-content: space-between;
+
+  .priceRemove {
+    display: flex;
+    align-items: center;
+  }
+
+  button.removeButton {
+    margin-left: 1rem;
+    height: 2rem;
+    background-color: $highlight;
+  }
 }
