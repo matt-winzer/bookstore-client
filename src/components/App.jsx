@@ -5,6 +5,7 @@ import { baseUrl } from '../api/api.config';
 
 import Navigation from './Navigation';
 import BookList from './BookList';
+import Cart from './Cart';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class App extends React.Component {
     this.state = {
       books: [],
       activePage: 'list',
+      cartItems: [],
     };
 
     this.getAllBooks = this.getAllBooks.bind(this);
@@ -42,6 +44,7 @@ class App extends React.Component {
     const {
       books,
       activePage,
+      cartItems
     } = this.state;
 
     return (
@@ -53,6 +56,11 @@ class App extends React.Component {
         {activePage === 'list' && (
           <BookList
             books={books}
+          />
+        )}
+        {activePage === 'cart' && (
+          <Cart
+            cartItem={cartItems}
           />
         )}
       </div>
