@@ -4,7 +4,6 @@ import styles from './cart.module.scss';
 import CartItem from '../CartItem';
 
 const Cart = ({ cartItems }) => {
-  console.log(cartItems.length);
   return (
     <section className={styles.container}>
       <h2>Shopping Cart Items {!cartItems.length && '(None Currently)'}</h2>
