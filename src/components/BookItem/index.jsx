@@ -5,7 +5,17 @@ import Card from '../shared/Card';
 
 const BookItem = ({ book }) => (
   <Card>
-    <p>Book title: {book.title}</p>
+    <h3>{book.title}</h3>
+    <p>{book.description}</p>
+    <p>Authors:</p>
+    <ul>
+      {book.authors.map((author) => (
+        <li>{author.name}</li>
+      ))}
+    </ul>
+    <div className={styles.purchaseContainer}>
+      <p>Price: ${book.price}</p>
+    </div>
   </Card>
 );
 
