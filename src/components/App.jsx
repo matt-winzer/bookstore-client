@@ -21,6 +21,8 @@ class App extends React.Component {
 
     this.getAllBooks = this.getAllBooks.bind(this);
     this.changeActivePage = this.changeActivePage.bind(this);
+    this.getCartBooks = this.getCartBooks.bind(this);
+    this.addBookToCart = this.addBookToCart.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +37,9 @@ class App extends React.Component {
         this.setState({
           books,
         });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
@@ -46,6 +51,9 @@ class App extends React.Component {
         this.setState({
           cartItems: books,
         });
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
@@ -53,6 +61,24 @@ class App extends React.Component {
     this.setState({
       activePage,
     });
+  }
+
+  addBookToCart(bookId) {
+    const { user } = this.state;
+    return fetch(`${baseUrl}/api/books/cart/${user.id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ bookId }),
+    })
+      .then((res) => res.json())
+      .then(({ success }) => {
+        if (success) this.getCartBooks();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -72,6 +98,7 @@ class App extends React.Component {
         {activePage === 'list' && (
           <BookList
             books={books}
+            addBookToCart={this.addBookToCart}
           />
         )}
         {activePage === 'cart' && (

@@ -1,4 +1,13 @@
+@import '../../styles/variables';
+
 .purchaseContainer {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+
+  button.addButton {
+    margin-left: 1rem;
+    height: 2rem;
+    background-color: $highlight;
+  }
 }
